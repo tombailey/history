@@ -44,6 +44,11 @@ function createMemoryHistory(props = {}) {
   const createHref = createPath;
 
   function push(path, state) {
+    if (path === undefined) {
+      warning(true, 'Path shouldn\'t be undefined');
+      return;
+    }
+
     warning(
       !(
         typeof path === 'object' &&
